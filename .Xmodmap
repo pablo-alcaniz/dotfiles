@@ -1,0 +1,4 @@
+keycode 135 = Mode_switch
+keycode 51 = backslash NoSymbol NoSymbol NoSymbol braceright 
+keycode 59 = comma semicolon NoSymbol NoSymbol less
+keycode 60 = period colon NoSymbol NoSymbol greater
