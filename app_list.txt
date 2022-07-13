@@ -1,0 +1,8 @@
+rofi 
+thunar
+https://wiki.gnome.org/Apps/Calculator
+plank 
+pdf mod 5
+nitrogen
+arandr
+volctl
