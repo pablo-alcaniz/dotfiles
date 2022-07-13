@@ -32,8 +32,8 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 import os
 import subprocess
-import psutil
-import iwlib
+#import psutil
+#import iwlib
 
 
 mod = "mod4"
@@ -164,13 +164,10 @@ keys = [
     Key([mod], "l", lazy.spawn("whatsapp-nativefier")),
 
     #abrir spotify
-    Key([mod], "o", lazy.spawn("spotify")),
+    Key([mod], "o", lazy.spawn("flatpak run com.spotify.Client")),
 
     #abrir code
-    Key([mod], "c", lazy.spawn("code")),
-
-    #abrir editor de texto
-    Key([mod], "x", lazy.spawn("nano")),
+    Key([mod], "c", lazy.spawn("code ")),
 
     #mover hacia el grupo de la derecha 
     Key([mod, "mod1"], "Right", lazy.screen.next_group()),
@@ -186,6 +183,9 @@ keys = [
 
     #lista de apps
     Key([mod], "a", lazy.spawn("thunar /usr/share/applications")),
+
+    #edge
+    Key([mod], "e", lazy.spawn("microsoft-edge-stable")),
 
 
 #######################################################################################################################33
@@ -206,8 +206,7 @@ grupo5 = "  " #code
 grupo6 = "  " #latex
 grupo7 = " 甆 " #whatsapp
 grupo8 = "  " #spotify
-grupo9 = "  " #organizacion
-
+grupo9 = "  " #organizacion
 
 
 
@@ -284,55 +283,55 @@ for i in groups:
             Key(
                 [mod, "shift"],
                 "1",
-                lazy.window.togroup(grupo1, switch_group=True),
+                lazy.window.togroup(grupo1, switch_group=False),
                 desc="Switch to & move focused window to group {}".format(grupo1),
             ),
             Key(
                 [mod, "shift"],
                 "2",
-                lazy.window.togroup(grupo2, switch_group=True),
+                lazy.window.togroup(grupo2, switch_group=False),
                 desc="Switch to & move focused window to group {}".format(grupo2),
             ),
             Key(
                 [mod, "shift"],
                 "3",
-                lazy.window.togroup(grupo3, switch_group=True),
+                lazy.window.togroup(grupo3, switch_group=False),
                 desc="Switch to & move focused window to group {}".format(grupo3),
             ),
             Key(
                 [mod, "shift"],
                 "4",
-                lazy.window.togroup(grupo4, switch_group=True),
+                lazy.window.togroup(grupo4, switch_group=False),
                 desc="Switch to & move focused window to group {}".format(grupo4),
             ),
             Key(
                 [mod, "shift"],
                 "5",
-                lazy.window.togroup(grupo5, switch_group=True),
+                lazy.window.togroup(grupo5, switch_group=False),
                 desc="Switch to & move focused window to group {}".format(grupo5),
             ),
             Key(
                 [mod, "shift"],
                 "6",
-                lazy.window.togroup(grupo6, switch_group=True),
+                lazy.window.togroup(grupo6, switch_group=False),
                 desc="Switch to & move focused window to group {}".format(grupo6),
             ),
             Key(
                 [mod, "shift"],
                 "7",
-                lazy.window.togroup(grupo7, switch_group=True),
+                lazy.window.togroup(grupo7, switch_group=False),
                 desc="Switch to & move focused window to group {}".format(grupo7),
             ),
             Key(
                 [mod, "shift"],
                 "8",
-                lazy.window.togroup(grupo8, switch_group=True),
+                lazy.window.togroup(grupo8, switch_group=False),
                 desc="Switch to & move focused window to group {}".format(grupo8),
             ),
             Key(
                 [mod, "shift"],
                 "9",
-                lazy.window.togroup(grupo9, switch_group=True),
+                lazy.window.togroup(grupo9, switch_group=False),
                 desc="Switch to & move focused window to group {}".format(grupo9),
             ),
         ]
@@ -345,7 +344,7 @@ layouts = [
         border_normal = color_nord,
         #border_on_single = True, 
         border_width = 2,
-        margin_on_single = 10,
+        margin_on_single = 7,
         margin = 4,
         ),
     layout.Max(),
@@ -385,89 +384,30 @@ screens = [
                     padding = 10
                 ),
                 fc_separador(),
-                widget.TextBox(text='VOL:'),
-                widget.PulseVolume(
-                    limit_max_volume = True
-                ),
+                widget.Spacer(
+                    length=200
+                    ),
+                #fc_separador(),
+                #widget.TextBox(text='VOL:'),
+                #widget.PulseVolume(
+                #    limit_max_volume = True
+                #x),
                 fc_separador(),
                 widget.TextBox(text='BRIGHT:'),
                 widget.Backlight(
                     backlight_name = 'intel_backlight',
                     brightness_file = 'brightness'
                 ),
-                fc_separador(),
-                widget.CPU(
-                    format = 'CPU:{load_percent}%'
-                ),
-                fc_separador(),
-                widget.TextBox(text='RAM:'), 
-                widget.Memory(
-                   format = '{MemPercent:}',
-                ),
-                widget.TextBox(text='%'),
-                fc_separador(),                
-                widget.Battery(
-                    format = 'BAT:{percent:2.0%}',
-
-                ),
-                #widget.CurrentLayout(),
-                fc_separador(),
-                widget.Clock(format="%H:%M %A %d-%m-%Y"),
-                widget.Sep(
-                    linewidth = 2,
-                    padding = 3,
-                    foreground = color_barra,
-                    background = color_barra
-                )
-            ],
-            tamaño_barra, background = color_barra
-    )),
-    Screen(
-        top=bar.Bar(
-            [
-                widget.GroupBox(
-                    fontsize = tamaño_iconos,
-                    active = color_iconos_activos,
-                    #inactive = color_morado,
-                    borderwidth = 0,
-                    disable_drag = True,
-                    #foreground = color_fg,
-                    #background = color_bg,
-                    highlight_method = metodo_resalte,
-                    margin_x = 0,
-                    margin_y = 4,
-                    padding_y = 0, 
-                    this_current_screen_border = color_resalte
-                ),
-                fc_separador(),
-                #fc_separador_trans(),
-                widget.WindowName(
-                    parse_text = longNameParse,
-                ),
-                widget.Systray(
-                    padding = 10
-                ),
-                fc_separador(),
-                widget.TextBox(text='VOL:'),
-                widget.PulseVolume(
-                    limit_max_volume = True
-                ),
-                fc_separador(),
-                widget.TextBox(text='BRIGHT:'),
-                widget.Backlight(
-                    backlight_name = 'intel_backlight',
-                    brightness_file = 'brightness'
-                ),
-                fc_separador(),
-                widget.CPU(
-                    format = 'CPU:{load_percent}%'
-                ),
-                fc_separador(),
-                widget.TextBox(text='RAM:'), 
-                widget.Memory(
-                   format = '{MemPercent:}',
-                ),
-                widget.TextBox(text='%'),
+                
+                #widget.CPU(
+                #    format = 'CPU:{load_percent}%'
+                #),
+                #fc_separador(),
+                #widget.TextBox(text='RAM:'), 
+                #widget.Memory(
+                #   format = '{MemPercent:}',
+                #),
+                #widget.TextBox(text='%'),
                 fc_separador(),                
                 widget.Battery(
                     format = 'BAT:{percent:2.0%}',
