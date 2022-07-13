@@ -24,3 +24,9 @@ nitrogen --restore  &
 #synaptics
 synclient VertScrollDelta=-60 &
 synclient TapButton1=1 &
+synclient PalmDetect=1 & 
+synclient PalmMinWidth=8 & 
+synclient PalmMinZ=300 &
+
+#dock 
+plank &
