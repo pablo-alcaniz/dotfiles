@@ -1,8 +1,16 @@
 rofi 
 thunar
-https://wiki.gnome.org/Apps/Calculator
+gnome-calculator
 plank 
 pdf mod 5
 nitrogen
 arandr
 volctl
+flatpak
+pamac
+flatseal
+hardinfo
+optimus-manager
+overgrive
+matlab 
+https://github.com/YoCodingMonster/OpenFreezeCenter
