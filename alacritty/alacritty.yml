@@ -62,39 +62,39 @@
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 window:
-    opacity: 0.5
-    padding:
-      x: 20
-      y: 10
+  opacity: 0.6
+  padding:
+    x: 20
+    y: 10
 
 colors:
-  # Default colors
+  name: vscode (dark)
+  author: senpai-10
   primary:
-    background: '#2E3440'
-    foreground: '#D8DEE9'
-
-  # Normal colors
+    background: "#1E1E1E"
+    foreground: "#D4D4D4"
+  cursor:
+    text: "#1d1f21"
+    cursor: "#cccccc"
   normal:
-    black: '#3B4252'
-    red: '#BF616A'
-    green: '#A3BE8C'
-    yellow: '#EBCB8B'
-    blue: '#81A1C1'
-    magenta: '#B48EAD'
-    cyan: '#88C0D0'
-    white: '#E5E9F0'
-
-  # Bright colors
+    black: "#000000"
+    red: "#cd3131"
+    green: "#0dbc79"
+    yellow: "#e5e510"
+    blue: "#2472c8"
+    magenta: "#bc3fbc"
+    cyan: "#11a8cd"
+    white: "#e5e5e5"
   bright:
-    black: '#4C566A'
-    red: '#BF616A'
-    green: '#A3BE8C'
-    yellow: '#EBCB8B'
-    blue: '#81A1C1'
-    magenta: '#B48EAD'
-    cyan: '#8FBCBB'
-    white: '#ECEFF4'
-theme: Nord
+    black: "#666666"
+    red: "#f14c4c"
+    green: "#23d18b"
+    yellow: "#f5f543"
+    blue: "#3b8eea"
+    magenta: "#d670d6"
+    cyan: "#29b8db"
+    white: "#e5e5e5"
+theme: vscode.dark
 
 # Startup Mode (changes require restart)
 #
@@ -127,7 +127,6 @@ theme: Nord
 #history: 10000
 # Scrolling distance multiplier.
 #multiplier: 3
-
 # Offset is the extra space around each character. `offset.y` can be thought
 # of as modifying the line spacing, and `offset.x` as modifying the letter
 # spacing.
@@ -158,11 +157,8 @@ font:
     family: JetBrains Mono
     style: Bold Italic
 
-  size: 18
+  size: 14
 
-
-
-#
 # Thin strokes are suitable for retina displays, but for non-retina screens
 # it is recommended to set `use_thin_strokes` to `false`.
 #use_thin_strokes: true
@@ -349,13 +345,13 @@ font:
 #cursor:
 # Cursor style
 cursor:
-    style: Block
+  style: Beam
+  blinking: Always
 # Cursor shape
 # Values for `shape`:
 #   - ▇ Block
 #   - _ Underline
 #   - | Beam
-
 # Cursor blinking state
 #
 # Values for `blinking`:
@@ -363,7 +359,8 @@ cursor:
 #   - Off: Disable blinking by default
 #   - On: Enable blinking by default
 #   - Always: Force the cursor to always blink
-#blinking: Off
+blinking: Always
+
 # Vi mode cursor style
 #
 # If the vi mode cursor style is `None` or not specified, it will fall back to
