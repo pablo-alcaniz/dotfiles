@@ -1,3 +1,4 @@
+okular
 rofi 
 thunar
 gnome-calculator
@@ -22,3 +23,4 @@ matlab
   mv libstdc++.so.6* exclude
 https://github.com/YoCodingMonster/OpenFreezeCenter
 jetBrains Mono
+python-pip
