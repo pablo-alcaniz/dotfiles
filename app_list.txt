@@ -12,6 +12,13 @@ flatseal
 hardinfo
 optimus-manager
 overgrive
-matlab 
+matlab
+  cd /usr/local/MATLAB/R2021b/
+  cd bin/glnxa64
+  mkdir exclude
+  mv libfreetype* exclude
+  cd ../../sys/os/glnxa64
+  mkdir exclude
+  mv libstdc++.so.6* exclude
 https://github.com/YoCodingMonster/OpenFreezeCenter
 jetBrains Mono
