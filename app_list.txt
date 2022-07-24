@@ -24,3 +24,4 @@ matlab
 https://github.com/YoCodingMonster/OpenFreezeCenter
 jetBrains Mono
 python-pip
+visual studio code
