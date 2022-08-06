@@ -3,6 +3,9 @@ rofi
 thunar
 gnome-calculator
 plank 
+gparted
+paraview
+spotify
 pdf mod 5
 nitrogen
 arandr
@@ -26,3 +29,6 @@ jetBrains Mono
 python-pip
 visual studio code
 spotify
+calibre
+alacritty
+  theme: vscode dark
