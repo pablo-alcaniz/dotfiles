@@ -14,6 +14,7 @@ flatpak
 pamac
 flatseal
 hardinfo
+pavucontrol
 optimus-manager
 overgrive
 matlab
