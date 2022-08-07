@@ -2,21 +2,31 @@ okular
 rofi 
 thunar
 gnome-calculator
+-PACMAN-
 plank 
 gparted
 paraview
-spotify
-pdf mod 5
 nitrogen
 arandr
-volctl
+pavucontrol
+python-pip
+ttf-jetbrains-mono
+calibre
+pdfmod 
+hardinfo
+
 flatpak
+
+-YAY-
+volctl
 pamac
 flatseal
-hardinfo
-pavucontrol
 optimus-manager
 overgrive
+visual studio code
+spotify
+
+
 matlab
   cd /usr/local/MATLAB/R2021b/
   cd bin/glnxa64
@@ -26,10 +36,9 @@ matlab
   mkdir exclude
   mv libstdc++.so.6* exclude
 https://github.com/YoCodingMonster/OpenFreezeCenter
-jetBrains Mono
-python-pip
-visual studio code
-spotify
-calibre
+
+
+
+
 alacritty
   theme: vscode dark
