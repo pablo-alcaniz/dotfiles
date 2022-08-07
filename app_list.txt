@@ -54,6 +54,9 @@ StartupNotify=true
   mkdir exclude
   mv libstdc++.so.6* exclude
   
+  s = settings;s.matlab.desktop.DisplayScaleFactor
+  s.matlab.desktop.DisplayScaleFactor.PersonalValue = 2
+  
 https://github.com/YoCodingMonster/OpenFreezeCenter
 
 
