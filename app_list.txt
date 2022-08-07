@@ -29,6 +29,10 @@ spotify
 
 
 matlab
+  preinstall:
+  sudo pacman -S libxcrypt libxcrypt-compat
+  rm ./bin/glnxa64/libfreetype.so.6*
+  postinstall
   cd /usr/local/MATLAB/R2021b/
   cd bin/glnxa64
   mkdir exclude
