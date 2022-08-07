@@ -36,6 +36,7 @@ matlab
   cd ../../sys/os/glnxa64
   mkdir exclude
   mv libstdc++.so.6* exclude
+  
 https://github.com/YoCodingMonster/OpenFreezeCenter
 
 
