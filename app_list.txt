@@ -14,6 +14,7 @@ ttf-jetbrains-mono
 calibre
 pdfmod 
 hardinfo
+pipewire-pulse
 
 flatpak
 
