@@ -1,8 +1,8 @@
+-PACMAN-
 okular
 rofi 
 thunar
 gnome-calculator
--PACMAN-
 plank 
 gparted
 paraview
