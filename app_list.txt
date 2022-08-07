@@ -15,6 +15,7 @@ calibre
 pdfmod 
 hardinfo
 pipewire-pulse
+gcc-fortran
 
 flatpak
 
@@ -33,7 +34,19 @@ matlab
   sudo pacman -S libxcrypt libxcrypt-compat
   rm ./bin/glnxa64/libfreetype.so.6*
   postinstall
-  cd /usr/local/MATLAB/R2021b/
+  sudo nano /usr/share/applications/matlab.desktop
+[Desktop Entry]
+Type=Application
+Terminal=false
+MimeType=text/x-matlab
+Exec=/home/pablo/Programas/MATLAB/R2021a/bin/matlab >
+Name=MATLAB
+Icon=matlab
+Categories=Development;Math;Science
+Comment=Scientific computing environment
+StartupNotify=true
+
+  cd /home/pablo/Programas/MATLAB/R2021b/
   cd bin/glnxa64
   mkdir exclude
   mv libfreetype* exclude
