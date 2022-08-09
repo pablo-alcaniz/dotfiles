@@ -16,6 +16,7 @@ pdfmod
 hardinfo
 pipewire-pulse
 gcc-fortran
+piper
 
 flatpak
 
