@@ -28,6 +28,7 @@ optimus-manager
 overgrive
 visual studio code
 spotify
+mkinitcpio-firmware
 
 
 matlab
