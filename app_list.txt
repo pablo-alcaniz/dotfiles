@@ -38,10 +38,11 @@ matlab
   postinstall
   sudo nano /usr/share/applications/matlab.desktop
 [Desktop Entry]
+[Desktop Entry]
 Type=Application
 Terminal=false
 MimeType=text/x-matlab
-Exec=/home/pablo/Programas/MATLAB/R2021a/bin/matlab >
+Exec=/home/pablo/Programas/MATLAB/R2021b/bin/matlab -desktop
 Name=MATLAB
 Icon=matlab
 Categories=Development;Math;Science
