@@ -62,6 +62,8 @@ StartupNotify=true
   
 https://github.com/YoCodingMonster/OpenFreezeCenter
 
+Fan Control (MSI laptop) -> isw (https://github.com/FaridZelli/ISW-Modern)
+
 
 
 
