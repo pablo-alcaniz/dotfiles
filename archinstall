@@ -1,0 +1,79 @@
+loadkeys es
+timedatectl set-ntp true
+
+pacman -Syyy
+reflector --latest 10 --sort rate --save /etc/oacman.d/mirrorlist
+pacman -Syyy
+
+lsblk 
+.
+mkfs.ext4
+.
+mount 
+.
+
+pacstrap /mnt base linux-lts linux-firmware nano intel-ucode
+
+genfstab -U /mnt >> /mnt/etc/fstab
+cat /mnt/etc/fstab
+
+arch-chroot /mnt 
+
+ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
+hwclock --systohc
+
+nano /etc/locale.gen
+  es_ES-UTF-8
+locale-gen
+echo "LANG=es_ES.UTF-8" >> /etc/locale.conf
+echo "KEYMAP=es" >> /etc/vconsole.conf
+
+nano /etc/hostname
+nano /etc/hosts
+
+passwd
+
+pacman -S grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel linux-lts-headers reflector 
+git bluez bluez-utils pipewire pipewire-pulse wireplumber ntfs-3g 
+
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg 
+
+systemctl enable NetworkManager 
+systemctl enable bluetooth 
+
+useradd -mG wheel pablo
+passwd pablo
+
+EDITOR=nano visudo
+  ...
+
+exit 
+
+umount -a 
+reboot
+
+sudo grub-mkconfig -o /boot/grub/grub.cfg 
+
+sudo pacman -S mesa vulkan-intel nvidia nvidia-lts nvidia-utils
+sudo pacman -S xorg 
+
+sudo pacman -S gdm 
+sudo systemctl enable gdm
+
+sudo pacman -S gnome xdg-utils 
+
+sudo pacman -S libreoffice
+
+sudo pacman -S flatpak
+
+sudo mkdir /usr/share/fonts/WindowsFonts
+sudo cp /Windows/Windows/Fonts/* /usr/share/fonts/WindowsFonts/
+sudo chmod 644 /usr/share/fonts/WindowsFonts/*
+fc-cache -f
+
+
+
+
+
+
