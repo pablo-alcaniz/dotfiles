@@ -72,7 +72,7 @@ sudo cp /Windows/Windows/Fonts/* /usr/share/fonts/WindowsFonts/
 sudo chmod 644 /usr/share/fonts/WindowsFonts/*
 fc-cache -f
 
-
+sudo systemctl enable fstrim.timer
 
 
 
