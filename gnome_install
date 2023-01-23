@@ -1,0 +1,12 @@
+alacritty
+
+#add pacman repos to gnome-software
+gnome-software-packagekit-plugin
+
+#scalling 
+  # opcion 1
+  mutter-x11-scaling (yay)
+    gsettings set org.gnome.mutter experimental-features "['x11-randr-fractional-scaling']"
+    sudo nano /etc/gdm/custom.conf 
+  # opcion 2
+  
