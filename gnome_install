@@ -11,6 +11,11 @@ gnome-software-packagekit-plugin
   # opcion 2 (*)
   gnome-tweaks --> font scalling
 
+#extensiones
+gnome-browser-connector (yay)
+https://extensions.gnome.org/extension/2890/tray-icons-reloaded/
+https://extensions.gnome.org/extension/8/places-status-indicator/
+
 #optimus-manager
 gdm-prime (yay)
 optimus-manager 
