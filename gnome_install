@@ -9,4 +9,4 @@ gnome-software-packagekit-plugin
     gsettings set org.gnome.mutter experimental-features "['x11-randr-fractional-scaling']"
     sudo nano /etc/gdm/custom.conf 
   # opcion 2
-  
+  gnome-tweaks --> font scalling
