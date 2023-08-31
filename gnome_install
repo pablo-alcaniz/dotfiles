@@ -21,3 +21,6 @@ alacarte (change app icons)
 
 #gestures
 https://github.com/JoseExposito/gnome-shell-extension-x11gestures
+
+Place indicator issue: 
+xdg-mime default org.gnome.Nautilus.desktop inode/directory
