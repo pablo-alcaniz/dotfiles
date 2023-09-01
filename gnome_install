@@ -1,26 +1,32 @@
-alacritty
+·alacritty
 
-#add pacman repos to gnome-software
+·#add pacman repos to gnome-software
 gnome-software-packagekit-plugin
 
-#scalling 
+·#scalling 
   gnome-tweaks --> font scalling
 
-#extensiones
+·#extensiones
 gnome-browser-connector (yay)
 https://extensions.gnome.org/extension/2890/tray-icons-reloaded/
 https://extensions.gnome.org/extension/8/places-status-indicator/
 
-#optimus-manager
+·#optimus-manager
 sddm (gdm prime deprecated)
 optimus-manager 
 optimus-manager-qt
 
-#iconos
+·#iconos
 alacarte (change app icons)
 
-#gestures
+·#gestures
 https://github.com/JoseExposito/gnome-shell-extension-x11gestures
 
-Place indicator issue: 
+·Place indicator issue: 
 xdg-mime default org.gnome.Nautilus.desktop inode/directory
+
+·Optimus Manager malfuction (ERROR: a GPU setup was initiated but Xorg post-start hook did not run.)
+"IMPORTANT : Manjaro KDE users
+Manjaro ships with a default configuration for SDDM (the default login manager for KDE) which overrides 
+some keys needed by optimus-manager. To use optimus-manager, you need to edit the file /etc/sddm.conf and 
+simply put a # before the line starting with DisplayCommandand the one starting with DisplayStopCommand."
