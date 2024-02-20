@@ -30,3 +30,6 @@ xdg-mime default org.gnome.Nautilus.desktop inode/directory
 Manjaro ships with a default configuration for SDDM (the default login manager for KDE) which overrides 
 some keys needed by optimus-manager. To use optimus-manager, you need to edit the file /etc/sddm.conf and 
 simply put a # before the line starting with DisplayCommandand the one starting with DisplayStopCommand."
+
+·Pip install externally managed enviroment
+  sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
