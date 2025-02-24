@@ -32,29 +32,26 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 import os
 import subprocess
-#import psutil
-#import iwlib
+import pulsectl_asyncio
+import pulsectl
 
 
 mod = "mod4"
 terminal = guess_terminal()
 
 color_iconos_activos = "#FFFFFF"
-tamaño_iconos = 30
 color_fg = "#282a36"
 color_bg = "#282a36"
 metodo_resalte = "block"  
 color_resalte = "#FF8F00"
+color_systray = "#242424"
 
-tamaño_barra = 30
-color_barra = "#1B1C23"
-tamaño_fuente_barra = 15
+tamaño_barra = 40
+color_barra = "#0B0B0B"
+tamaño_fuente_barra = 18
 
-color_nord = "#2E3440"
 
-color_morado = "#B48EAD"
-
-fuente_predeterminada = "JetBrains Mono"
+fuente_predeterminada = "Noto Sans Mono"
 
 
 # funciones 
@@ -69,14 +66,14 @@ def fc_separador():
 
 def fc_separador_trans():
     return widget.Sep(
-    linewidth = 277,
+    linewidth = 1,
     padding = 20,
-    foreground = color_nord,
-    background = color_nord
+    foreground = color_barra,
+    background = color_barra
     )
 
 def longNameParse(text): 
-    for string in ["Google Chrome", "Visual Studio Code", "MATLAB", "Simulink", "Edge"]: #Add any other apps that have long names here
+    for string in ["Google Chrome", "Visual Studio Code", "MATLAB", "Simulink", "Edge", "Firefox"]: #Add any other apps that have long names here
         if string in text:
             text = string
         else:
@@ -137,37 +134,16 @@ keys = [
     Key([mod], "Return", lazy.spawn("alacritty"), desc="Launch terminal"),
 
     #lanzar menu rofi 
-    Key([mod], "q", lazy.spawn("rofi -show drun -font 'JetBrains 18'")),
+    Key([mod], "q", lazy.spawn("rofi -show drun -font 'Noto Fonts 45'")),
 
     #lanzar edge 
-    Key([mod], "m", lazy.spawn("google-chrome-stable")),
-
-    #lanzar edge en moodle 
-    Key([mod, "mod1"], "m", lazy.spawn("google-chrome-stable https://moodle.upm.es/titulaciones/oficiales")),
-
-    #lanzar notion
-    Key([mod], "n", lazy.spawn("notion-app-enhanced")),
-
-    #lanzar todoist
-    Key([mod], "p", lazy.spawn("todoist")),
+    Key([mod], "m", lazy.spawn("firefox")),
 
     #lanzar thunar
-    Key([mod], "t", lazy.spawn("thunar")),
-
-    #lanza thunar en la carpeta de google drive (4º curso)
-    Key([mod], "g", lazy.spawn("thunar /home/pablo/google_drive/Estudios/Universidad/ETSIAE/4o\ Curso")),
-
-    #abrir thunar en la carpeta de descargas
-    Key([mod], "d", lazy.spawn("thunar /home/pablo/Descargas")),
-
-    #abrir whatsapp
-    Key([mod], "l", lazy.spawn("whatsapp-nativefier")),
-
-    #abrir spotify
-    Key([mod], "o", lazy.spawn("flatpak run com.spotify.Client")),
+    Key([mod], "t", lazy.spawn("nautilus")),
 
     #abrir code
-    Key([mod], "c", lazy.spawn("code ")),
+    Key([mod], "c", lazy.spawn("code")),
 
     #mover hacia el grupo de la derecha 
     Key([mod, "mod1"], "Right", lazy.screen.next_group()),
@@ -177,15 +153,6 @@ keys = [
 
     #apagar el equipo
     Key([mod, "mod1"], "BackSpace", lazy.spawn("poweroff")),
-
-    #apagar el equipo
-    Key([mod], "space", lazy.spawn("deepin-screen-recorder")),
-
-    #lista de apps
-    Key([mod], "a", lazy.spawn("thunar /usr/share/applications")),
-
-    #edge
-    Key([mod], "e", lazy.spawn("microsoft-edge-stable")),
 
 
 #######################################################################################################################33
@@ -198,15 +165,15 @@ keys = [
 ]
 
 
-grupo1 = "  " #arch
-grupo2 = "  " #web
-grupo3 = "  " #pdf
-grupo4 = " ﱮ " #archivos
-grupo5 = "  " #code
-grupo6 = "  " #latex
-grupo7 = " 甆 " #whatsapp
-grupo8 = "  " #spotify
-grupo9 = "  " #organizacion
+grupo1 = " 1_main "  
+grupo2 = " 2_web " 
+grupo3 = " 3_dev " 
+grupo4 = " 4_term " 
+grupo5 = " 5_git " 
+grupo6 = " 6 " 
+grupo7 = " 7 " 
+grupo8 = " 8 " 
+grupo9 = " 9 " 
 
 
 
@@ -340,12 +307,12 @@ for i in groups:
 layouts = [
     
     layout.Columns(
-        border_focus = color_resalte, 
-        border_normal = color_nord,
-        #border_on_single = True, 
+        border_focus = color_resalte,
+        border_on_single = False, 
+        border_normal = color_barra,
         border_width = 2,
-        margin_on_single = 7,
-        margin = 4,
+        margin_on_single = 20,
+        margin = 20,
         ),
     layout.Max(),
 ]
@@ -361,14 +328,12 @@ screens = [
     Screen(
         top=bar.Bar(
             [
+                fc_separador_trans(),                    
                 widget.GroupBox(
-                    fontsize = tamaño_iconos,
+                    fontsize = 20,
                     active = color_iconos_activos,
-                    #inactive = color_morado,
                     borderwidth = 0,
                     disable_drag = True,
-                    #foreground = color_fg,
-                    #background = color_bg,
                     highlight_method = metodo_resalte,
                     margin_x = 0,
                     margin_y = 4,
@@ -376,44 +341,29 @@ screens = [
                     this_current_screen_border = color_resalte
                 ),
                 fc_separador(),
-                #fc_separador_trans(),
                 widget.WindowName(
                     parse_text = longNameParse,
                 ),
                 widget.Systray(
-                    padding = 10
+                    padding = 15,
+                    icon_size = 28,
+                    background = color_systray
                 ),
                 fc_separador(),
-                widget.Spacer(
-                    length=200
-                    ),
-                #fc_separador(),
-                #widget.TextBox(text='VOL:'),
-                #widget.PulseVolume(
-                #    limit_max_volume = True
-                #x),
+                widget.TextBox(text='VOL: '),
+                widget.PulseVolume(
+                    limit_max_volume = True
+                ),
                 fc_separador(),
                 widget.TextBox(text='BRIGHT:'),
                 widget.Backlight(
                     backlight_name = 'intel_backlight',
                     brightness_file = 'brightness'
                 ),
-                
-                #widget.CPU(
-                #    format = 'CPU:{load_percent}%'
-                #),
-                #fc_separador(),
-                #widget.TextBox(text='RAM:'), 
-                #widget.Memory(
-                #   format = '{MemPercent:}',
-                #),
-                #widget.TextBox(text='%'),
                 fc_separador(),                
                 widget.Battery(
-                    format = 'BAT:{percent:2.0%}',
-
+                    format = 'BAT: {percent:2.0%}',
                 ),
-                #widget.CurrentLayout(),
                 fc_separador(),
                 widget.Clock(format="%H:%M %A %d-%m-%Y"),
                 widget.Sep(
@@ -423,7 +373,11 @@ screens = [
                     background = color_barra
                 )
             ],
-            tamaño_barra, background = color_barra
+            size = tamaño_barra, 
+            background = color_barra,
+            border_width=[0, 0, 0, 0],
+            opacity=1,
+            margin=[10, 20, -10, 20],
     ))
 ]
 
@@ -455,6 +409,7 @@ floating_layout = layout.Floating(
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
+follow_mouse_focus = "click_or_drag_only"
 
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?
@@ -473,4 +428,4 @@ wmname = "LG3D"
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
-    subprocess.run([home])
+    subprocess.call(home)
