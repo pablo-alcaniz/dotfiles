@@ -1,5 +1,11 @@
+#!/bin/bash
+
+#????
+prime-offload
+
 #pantalla
 /bin/python /home/pablo/.config/qtile/check_monitor.py
+
 #volumen
 volctl &
 #google drive
@@ -17,6 +23,7 @@ caffeine &
 #aplicaciones
 optimus-manager &
 optimus-manager-qt &
+
 
 #fondo de pantalla
 nitrogen --restore  &
