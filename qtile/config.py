@@ -32,6 +32,7 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 import os
 import subprocess
+import check_monitor
 import pulsectl_asyncio
 import pulsectl
 
@@ -73,7 +74,8 @@ def fc_separador_trans():
     )
 
 def longNameParse(text): 
-    for string in ["Google Chrome", "Visual Studio Code", "MATLAB", "Simulink", "Edge", "Firefox"]: #Add any other apps that have long names here
+    for string in ["Google Chrome", "Visual Studio Code", "MATLAB", "Simulink",\
+                    "Edge", "Firefox", "Obsidian", "Brave"]: #Add any other apps that have long names here
         if string in text:
             text = string
         else:
@@ -105,10 +107,10 @@ keys = [
     Key([mod, "control"], "Down", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "Up", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "z", lazy.layout.normalize(), desc="Reset all window sizes"),
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
+
+    Key([mod], "F1", lazy.to_screen(0)),
+    Key([mod], "F2", lazy.to_screen(1)),
+
     Key(
         [mod, "shift"],
         "Return",
@@ -137,13 +139,17 @@ keys = [
     Key([mod], "q", lazy.spawn("rofi -show drun -font 'Noto Fonts 45'")),
 
     #lanzar edge 
-    Key([mod], "m", lazy.spawn("firefox")),
+    Key([mod], "m", lazy.spawn("brave")),
 
     #lanzar thunar
     Key([mod], "t", lazy.spawn("nautilus")),
 
     #abrir code
     Key([mod], "c", lazy.spawn("code")),
+
+    #captura de pantalla
+    Key([mod, "mod1"], "Space", lazy.spawn("gnome-screenshot -a")),
+    Key([mod], "Space", lazy.spawn("gnome-screenshot")),
 
     #mover hacia el grupo de la derecha 
     Key([mod, "mod1"], "Right", lazy.screen.next_group()),
@@ -314,7 +320,9 @@ layouts = [
         margin_on_single = 20,
         margin = 20,
         ),
-    layout.Max(),
+    layout.Max(
+        margin = 20,
+    ),
 ]
 
 widget_defaults = dict(
@@ -324,7 +332,8 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-screens = [
+
+screens_multi = [
     Screen(
         top=bar.Bar(
             [
@@ -368,7 +377,41 @@ screens = [
                 widget.Clock(format="%H:%M %A %d-%m-%Y"),
                 widget.Sep(
                     linewidth = 2,
-                    padding = 3,
+                    padding = 10,
+                    foreground = color_barra,
+                    background = color_barra
+                )
+            ],
+            size = tamaño_barra, 
+            background = color_barra,
+            border_width=[0, 0, 0, 0],
+            opacity=1,
+            margin=[10, 20, -10, 20],
+    )),
+    Screen(
+        top=bar.Bar(
+            [
+                fc_separador_trans(),                    
+                widget.GroupBox(
+                    fontsize = 20,
+                    active = color_iconos_activos,
+                    borderwidth = 0,
+                    disable_drag = True,
+                    highlight_method = metodo_resalte,
+                    margin_x = 0,
+                    margin_y = 4,
+                    padding_y = 0, 
+                    this_current_screen_border = color_resalte
+                ),
+                fc_separador(),
+                widget.WindowName(
+                    parse_text = longNameParse,
+                ),
+                fc_separador(),
+                widget.Clock(format="%H:%M"),
+                widget.Sep(
+                    linewidth = 2,
+                    padding = 10,
                     foreground = color_barra,
                     background = color_barra
                 )
@@ -380,6 +423,70 @@ screens = [
             margin=[10, 20, -10, 20],
     ))
 ]
+
+screens_single = [
+    Screen(
+        top=bar.Bar(
+            [
+                fc_separador_trans(),                    
+                widget.GroupBox(
+                    fontsize = 20,
+                    active = color_iconos_activos,
+                    borderwidth = 0,
+                    disable_drag = True,
+                    highlight_method = metodo_resalte,
+                    margin_x = 0,
+                    margin_y = 4,
+                    padding_y = 0, 
+                    this_current_screen_border = color_resalte
+                ),
+                fc_separador(),
+                widget.WindowName(
+                    parse_text = longNameParse,
+                ),
+                widget.Systray(
+                    padding = 15,
+                    icon_size = 28,
+                    background = color_systray
+                ),
+                fc_separador(),
+                widget.TextBox(text='VOL: '),
+                widget.PulseVolume(
+                    limit_max_volume = True
+                ),
+                fc_separador(),
+                widget.TextBox(text='BRIGHT:'),
+                widget.Backlight(
+                    backlight_name = 'intel_backlight',
+                    brightness_file = 'brightness'
+                ),
+                fc_separador(),                
+                widget.Battery(
+                    format = 'BAT: {percent:2.0%}',
+                ),
+                fc_separador(),
+                widget.Clock(format="%H:%M %A %d-%m-%Y"),
+                widget.Sep(
+                    linewidth = 2,
+                    padding = 10,
+                    foreground = color_barra,
+                    background = color_barra
+                )
+            ],
+            size = tamaño_barra, 
+            background = color_barra,
+            border_width=[0, 0, 0, 0],
+            opacity=1,
+            margin=[10, 20, -10, 20],
+    ))
+]
+
+monitor_status = check_monitor.multimonitor_bool()
+if monitor_status == True:
+    screens = screens_multi
+else:
+    screens = screens_single
+
 
 
 # Drag floating layouts.
